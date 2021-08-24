@@ -25,6 +25,24 @@ import net.guides.springboot2.crud.repository.EmployeeRepository;
 @RequestMapping("/api/v1")
 public class EmployeeController
 {
+	
+	
+@Controller
+public class GreetingController {
+
+  @GetMapping("/greeting")
+  public String greetingForm(Model model) {
+    model.addAttribute("greeting", new Greeting());
+    return "greeting";
+  }
+
+  @PostMapping("/greeting")
+  public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
+    model.addAttribute("greeting", greeting);
+    return "result";
+  }
+
+
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
@@ -78,19 +96,3 @@ public class EmployeeController
 
 
 
-@Controller
-public class GreetingController {
-
-  @GetMapping("/greeting")
-  public String greetingForm(Model model) {
-    model.addAttribute("greeting", new Greeting());
-    return "greeting";
-  }
-
-  @PostMapping("/greeting")
-  public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-    model.addAttribute("greeting", greeting);
-    return "result";
-  }
-
-}

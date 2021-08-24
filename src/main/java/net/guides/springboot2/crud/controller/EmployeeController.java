@@ -27,8 +27,7 @@ public class EmployeeController
 {
 	
 	
-@Controller
-public class GreetingController {
+
 
 
 
@@ -80,18 +79,19 @@ public class GreetingController {
 		return response;
 	}
 	
+	@GetMapping("/greeting")
+	public String greetingForm(Model model)
+	{
+		model.addAttribute("greeting", new Greeting());
+		return "greeting";
+	}
 	
-  @GetMapping("/greeting")
-  public String greetingForm(Model model) {
-    model.addAttribute("greeting", new Greeting());
-    return "greeting";
-  }
-
-  @PostMapping("/greeting")
-  public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-    model.addAttribute("greeting", greeting);
-    return "result";
-  }
+	@PostMapping("/greeting")
+	public String greetingSubmit(@ModelAttribute Greeting greeting, Model model)
+	{
+		model.addAttribute("greeting", greeting);
+		return "result";
+	}
 }
 
 
